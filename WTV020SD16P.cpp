@@ -1,5 +1,5 @@
 /*
- WtvPadawan.cpp Version 1.1 
+ WTV020SD16P.cpp Version 1.1 
  Library to control a WTV020-SD-16P module to play voices from an Arduino board.
  Created by Diego J. Arevalo, August 6th, 2012.
  Modifed by Ryszard Malinowski November 30, 2014.
@@ -21,14 +21,14 @@ Padawan - Removed reset
  */
 
 #include "Arduino.h"
-#include "WtvPadawan.h"
+#include "WTV020SD16P.h"
 
 const unsigned int PLAY_PAUSE = 0xFFFE;
 const unsigned int STOP = 0xFFFF;
 const unsigned int VOLUME_MIN = 0xFFF0;
 const unsigned int VOLUME_MAX = 0xFFF7;
 
-WtvPadawan::WtvPadawan(int clockPin,int dataPin,int busyPin)
+WTV020SD16P::WTV020SD16P(int clockPin,int dataPin,int busyPin)
 {
   // Save private values from constructor
   _clockPin=clockPin;
@@ -54,7 +54,7 @@ WtvPadawan::WtvPadawan(int clockPin,int dataPin,int busyPin)
 
 
 // Public: Play entire song and wait till song finishes
-void WtvPadawan::playVoice(unsigned int voiceNumber){
+void WTV020SD16P::playVoice(unsigned int voiceNumber){
   sendCommand(voiceNumber);
   // Wait 20ms for busy to be active
   delayMicros(20000);
@@ -66,32 +66,32 @@ void WtvPadawan::playVoice(unsigned int voiceNumber){
 }
 
 // Public: Start playing song and return
-void WtvPadawan::asyncPlayVoice(unsigned int voiceNumber){
+void WTV020SD16P::asyncPlayVoice(unsigned int voiceNumber){
   sendCommand(voiceNumber);
 }
 
 // Public: Stop playing song
-void WtvPadawan::stopVoice(){
+void WTV020SD16P::stopVoice(){
   sendCommand(STOP);
 }
 
 // Public: Pause/Resume song
-void WtvPadawan::pauseVoice(){
+void WTV020SD16P::pauseVoice(){
   sendCommand(PLAY_PAUSE);
 }
 
 // Public: Mute sound - same as setVolume(0)
-void WtvPadawan::mute(){
+void WTV020SD16P::mute(){
   sendCommand(VOLUME_MIN);
 }
 
 // Public: Unmute sound restoring the previous volume
-void WtvPadawan::unmute(){
+void WTV020SD16P::unmute(){
   sendCommand(_currentVolume);
 }
 
 // Public: Set volume
-void WtvPadawan::setVolume(unsigned int volume){
+void WTV020SD16P::setVolume(unsigned int volume){
   if(volume < 0x0008) {
     _currentVolume = VOLUME_MIN + volume;
     sendCommand(_currentVolume);
@@ -100,7 +100,7 @@ void WtvPadawan::setVolume(unsigned int volume){
 
 
 // Private: Send command to sound module
-void WtvPadawan::sendCommand(unsigned int command) {
+void WTV020SD16P::sendCommand(unsigned int command) {
   
   //Start bit Low level pulse.
   digitalWrite(_clockPin, LOW);
@@ -130,7 +130,7 @@ void WtvPadawan::sendCommand(unsigned int command) {
 
 
 // Private: Wait specified time since the last wait
-void WtvPadawan::delayMicros(unsigned long delayMicros) {
+void WTV020SD16P::delayMicros(unsigned long delayMicros) {
   unsigned long stopMicros;
   unsigned long currentMicros;
   // set current time
