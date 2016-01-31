@@ -1,7 +1,7 @@
 # WTV020SD16P
 Arduino library for the WTV020-SD-16P sound module
 
- WtvPadawan.cpp Version 1.2 
+WTV020SD16P.cpp Version 1.2 
  Library to control a WTV020-SD-16P module to play voices from an Arduino board.
  Created by Diego J. Arevalo, August 6th, 2012.
  Modifed by Ryszard Malinowski November 30, 2014.
