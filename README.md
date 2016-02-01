@@ -11,14 +11,14 @@ Modifed by Dan F  March 2015
  Released into the public domain.
  
  **Changes:**
- V1.0 - Original library written by Diego J. Arevalo
- V1.1 - Changes by Ryszard Malinowski:
-- Add "delayMicros" function execute exact delay from the last call
-- Fix clock timing in "setCommand" function
-- Add "setVolume" function
-- Fix "unmute" function to restore original volume
-- Padawan - Removed reset
+ - V1.0 - Original library written by Diego J. Arevalo
+ - V1.1 - Changes by Ryszard Malinowski:
+>Add "delayMicros" function execute exact delay from the last call
+>Fix clock timing in "setCommand" function
+>Add "setVolume" function
+>Fix "unmute" function to restore original volume
+>Padawan - Removed reset
 
- v1.2 - Changes by r0n_dL
-- Renamed .cpp & .h to WTV020SD16P
-- Published to GitHub
+ - v1.2 - Changes by r0n_dL
+>Renamed .cpp & .h to WTV020SD16P
+>Published to GitHub
